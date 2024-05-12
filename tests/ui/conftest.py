@@ -1,13 +1,14 @@
 import os
-import allure
 import pytest
-from utils import attach
+import allure
 from selene import browser
-from selenium import webdriver
 from dotenv import load_dotenv
+from utils import attach
+from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
-DEFAULT_VERSION = '122.0'
+DEFAULT_BROWSER_VERSION = "122.0"
+DEFAULT_BROWSER_NAME = "chrome"
 
 
 @allure.step('Select browser version')
@@ -24,18 +25,20 @@ def load_env():
 
 
 @pytest.fixture(scope="function", autouse=True)
-def driver_configuration(request):
+def setup_browser(request):
     with allure.step('Driver configuration strategy'):
         browser_name = request.config.getoption('--browser_name')
+        browser_name = browser_name if browser_name != '' else DEFAULT_BROWSER_NAME
         browser_version = request.config.getoption('--browser_version')
-        browser_version = browser_version if browser_version != '' else DEFAULT_VERSION
+        browser_version = browser_version if browser_version != '' else DEFAULT_BROWSER_VERSION
         with allure.step('Select Driver loading strategy'):
             if browser_name.lower() == 'chrome':
                 driver_options = ChromeOptions()
 
+        browser.config.base_url = "https://www.autodoc.ru/"
         browser.config.window_width = 1920
         browser.config.window_height = 1080
-        browser.config.base_url = "https://www.autodoc.ru/"
+
 
         selenoid_capabilities = {
             "browserName": browser_name,
@@ -49,8 +52,7 @@ def driver_configuration(request):
         driver_options.capabilities.update(selenoid_capabilities)
         login = os.getenv('LOGIN')
         password = os.getenv('PASSWORD')
-        driver = webdriver.Remote(
-            command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        driver = webdriver.Remote(command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
             options=driver_options)
 
         browser.config.driver = driver
