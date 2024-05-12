@@ -6,7 +6,6 @@ from selene import browser
 from selenium import webdriver
 from dotenv import load_dotenv
 from selenium.webdriver import ChromeOptions
-from selenium.webdriver import FirefoxOptions
 
 DEFAULT_VERSION = '122.0'
 
@@ -15,7 +14,7 @@ DEFAULT_VERSION = '122.0'
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default='chrome', help="Choose browser name.")
     parser.addoption('--browser_version', default='122.0',
-                     help='Choose browser version. For Chrome: 120.0 or 121.0 or 124.0. For Firefox: 122.0. or 123.0')
+                     help='Choose browser version. For Chrome: 120.0 or 121.0 or 124.0.')
 
 
 @allure.step('Load env')
@@ -33,8 +32,6 @@ def driver_configuration(request):
         with allure.step('Select Driver loading strategy'):
             if browser_name.lower() == 'chrome':
                 driver_options = ChromeOptions()
-            elif browser_name.lower() == 'firefox':
-                driver_options = FirefoxOptions()
 
         browser.config.window_width = 1920
         browser.config.window_height = 1080
