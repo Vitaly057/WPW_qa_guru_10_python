@@ -1,0 +1,331 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "parentId": {
+      "type": "integer"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "login": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "integer"
+    },
+    "shoppingCartItemsCount": {
+      "type": "integer"
+    },
+    "vinRequestsItemsCount": {
+      "type": "integer"
+    },
+    "cityId": {
+      "type": "integer"
+    },
+    "cityName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "integer"
+    },
+    "longitude": {
+      "type": "integer"
+    },
+    "contractDate": {
+      "type": "string"
+    },
+    "discount": {
+      "type": "string"
+    },
+    "discountTypeId": {
+      "type": "integer"
+    },
+    "haveSubClients": {
+      "type": "boolean"
+    },
+    "currentAccessLevel": {
+      "type": "integer"
+    },
+    "domainType": {
+      "type": "string"
+    },
+    "fetchFriendBonusScore": {
+      "type": "object",
+      "properties": {
+        "isActive": {
+          "type": "boolean"
+        },
+        "code": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "isActiveMessage": {
+          "type": "string"
+        },
+        "infoMessage": {
+          "type": "string"
+        },
+        "friends": {
+          "type": "array",
+          "items": {}
+        },
+        "bonusHistory": {
+          "type": "array",
+          "items": {}
+        },
+        "bonus": {
+          "type": "number"
+        },
+        "typeId": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "isActive",
+        "code",
+        "score",
+        "isActiveMessage",
+        "infoMessage",
+        "friends",
+        "bonusHistory",
+        "bonus",
+        "typeId"
+      ]
+    },
+    "autoManScore": {
+      "type": "object",
+      "properties": {
+        "isActive": {
+          "type": "boolean"
+        },
+        "discount": {
+          "type": "string"
+        },
+        "isActiveMessage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "isActive",
+        "discount",
+        "isActiveMessage"
+      ]
+    },
+    "accessLevels": {
+      "type": "array",
+      "items": {}
+    },
+    "manager": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phones": {
+          "type": "array",
+          "items": {}
+        },
+        "email": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "photoUrl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "phones",
+        "email",
+        "type",
+        "photoUrl"
+      ]
+    },
+    "represent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "integer"
+        },
+        "longitude": {
+          "type": "integer"
+        },
+        "phones": {
+          "type": "array",
+          "items": {}
+        },
+        "address": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "workOnHoliday": {
+          "type": "boolean"
+        },
+        "warningHolidaySchedule": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "latitude",
+        "longitude",
+        "phones",
+        "address",
+        "name",
+        "workOnHoliday",
+        "warningHolidaySchedule"
+      ]
+    },
+    "relatedProfiles": {
+      "type": "array",
+      "items": {}
+    },
+    "notificationSettings": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "integer"
+        },
+        "settings": {
+          "type": "integer"
+        },
+        "isInformationNotifyActive": {
+          "type": "boolean"
+        },
+        "emailNotificationSettings": {
+          "type": "object",
+          "properties": {
+            "isActive": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "isActive",
+            "items"
+          ]
+        },
+        "smsNotificationSettings": {
+          "type": "object",
+          "properties": {
+            "isActive": {
+              "type": "boolean"
+            },
+            "showSmsSettings": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "isActive",
+            "showSmsSettings",
+            "id"
+          ]
+        },
+        "pushNotificationSettings": {
+          "type": "object",
+          "properties": {
+            "isCommentNotifyActive": {
+              "type": "boolean"
+            },
+            "isAnswersNotifyActive": {
+              "type": "boolean"
+            },
+            "isLikesNotifyActive": {
+              "type": "boolean"
+            },
+            "isCancelPushApplicable": {
+              "type": "boolean"
+            },
+            "isReadyForDeliveryPushApplicable": {
+              "type": "boolean"
+            },
+            "isDeliveredPushApplicable": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "isCommentNotifyActive",
+            "isAnswersNotifyActive",
+            "isLikesNotifyActive",
+            "isCancelPushApplicable",
+            "isReadyForDeliveryPushApplicable",
+            "isDeliveredPushApplicable"
+          ]
+        }
+      },
+      "required": [
+        "clientId",
+        "settings",
+        "isInformationNotifyActive",
+        "emailNotificationSettings",
+        "smsNotificationSettings",
+        "pushNotificationSettings"
+      ]
+    },
+    "isTestEnviroment": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "parentId",
+    "id",
+    "login",
+    "name",
+    "status",
+    "shoppingCartItemsCount",
+    "vinRequestsItemsCount",
+    "cityId",
+    "cityName",
+    "email",
+    "phone",
+    "address",
+    "latitude",
+    "longitude",
+    "contractDate",
+    "discount",
+    "discountTypeId",
+    "haveSubClients",
+    "currentAccessLevel",
+    "domainType",
+    "fetchFriendBonusScore",
+    "autoManScore",
+    "accessLevels",
+    "manager",
+    "represent",
+    "relatedProfiles",
+    "notificationSettings",
+    "isTestEnviroment"
+  ]
+}
